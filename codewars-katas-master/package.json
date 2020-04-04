@@ -1,0 +1,56 @@
+{
+  "license": "MIT",
+  "name": "codewars-katas",
+  "description": "Codewars katas ark",
+  "author": {
+    "name": "Leonardo Galante",
+    "email": "lndgalante@gmail.com"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/lodash": "^4.14.149",
+    "@types/moment": "^2.13.0",
+    "@types/ramda": "^0.27.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "jest-extended": "^0.11.5",
+    "prettier": "^2.0.1",
+    "xo": "0.28.0"
+  },
+  "scripts": {
+    "lint": "xo",
+    "test": "jest",
+    "test-watch": "jest -o --watch",
+    "update-index": "node ./lib/index/index-generator.js",
+    "install-generator-deps": "cd ./lib/katas && npm install",
+    "create-kata": "node --no-warnings ./lib/katas/kata-generator.js --link"
+  },
+  "xo": {
+    "esnext": true,
+    "extends": [
+      "prettier",
+      "plugin:jest/recommended"
+    ],
+    "ignores": [
+      "lib"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  }
+}
